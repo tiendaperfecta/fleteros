@@ -1,0 +1,10 @@
+# Mapeo de nombres / exclusiones para el panel de fleteros de Tienda Perfecta.
+# Como el carton ahora sale de la API (no de una planilla), este archivo solo
+# sirve para EXCLUIR choferes de la web: mapearlos a un nombre que despues el
+# robot filtra, o (mas simple) agregar su codigoChofer a la lista $EXCLUIR
+# dentro del robot.
+#
+#   nombre corto = NOMBRE COMPLETO
+#
+# Excluidos conocidos (igual que en las otras instancias): SIN CHOFER (10013).
+# Agregar aca los que Lucas vaya pidiendo sacar.
