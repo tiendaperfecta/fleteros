@@ -79,7 +79,7 @@ b { font-weight: 700; }
   opacity: 1; z-index: 0;
 }
 .hero > * { position: relative; z-index: 1; }
-.hero__bar { display: flex; align-items: center; gap: 12px; max-width: 1080px; margin: 0 auto; }
+.hero__bar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; max-width: 1080px; margin: 0 auto; }
 .brand-logo {
   width: 48px; height: 48px; border-radius: 12px; flex: none;
   background: #fff; object-fit: contain; padding: 4px;
@@ -89,6 +89,8 @@ b { font-weight: 700; }
   display: grid; place-items: center; color: var(--pine-d);
   font-weight: 800; font-size: 15px; letter-spacing: .02em;
 }
+.brand-item { display: flex; align-items: center; gap: 10px; }
+.brand-item__name { font-size: 15px; font-weight: 700; letter-spacing: .01em; }
 .brand-txt { display: flex; flex-direction: column; }
 .brand-name { font-size: 15px; font-weight: 700; letter-spacing: .01em; }
 .brand-sub { font-size: 12px; opacity: .82; }
