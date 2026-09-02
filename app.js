@@ -588,74 +588,43 @@
       return { nombre: n, zona: datos.porFletero[n].zona, efE: pct(p.efE), efR: pct(p.efR), asist: asist, diasTrab: trab };
     });
 
-    // Premios según la métrica y el porcentaje (reglas de la empresa).
-    // PENDIENTE en Tienda Perfecta (no se sabe todavía si pagan premios):
-    // no se calcula nada hasta que CONFIG.premiosHabilitados se active con
-    // la escala real. La columna queda igual, siempre en "—".
-    function premioPara(campo, v) {
-      if (!CONFIG.premiosHabilitados) return null;
-      if (v == null) return null;
-      if (campo === "efE") {           // Efectividad de entrega
-        if (v >= 95) return 100000;
-        if (v >= 90) return 50000;
-      } else {                          // Retorno de cartón
-        if (v >= 80) return 150000;
-        if (v >= 70) return 100000;
-        if (v >= 60) return 50000;
-      }
-      return null;
-    }
-    function fmtPremio(n) {
-      var s = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-      return "$" + s;
-    }
-
-    // Un ranking por métrica: cada uno ordena y muestra solo su valor.
-    // Sin 85% de asistencia (días con reparto / días hábiles) no se cobra premio.
+    // Premios: ELIMINADOS por ahora (pedido de Lucas, 2/9/2026 — todavía no
+    // se sabe si Tienda Perfecta paga premios). Una sola tabla combinada con
+    // asistencia, efectividad de entrega y cartón, sin columna de premio.
     var ASIST_MIN = 85;
-    function tablaRanking(titulo, campo, etiqueta, conAsist, premiosTxt) {
-      var lista = filas.filter(function (f) { return f[campo] != null; })
-        .sort(function (a, b) { return (b[campo] || 0) - (a[campo] || 0); });
+    function tablaRanking(titulo) {
+      var lista = filas.filter(function (f) { return f.efE != null || f.efR != null; })
+        .sort(function (a, b) { return (b.efE || 0) - (a.efE || 0); });
       if (!lista.length) return null;
 
       var tabla = el("div", "rank reveal");
       var head =
         '<div class="rank__head"><span>#</span><span>Fletero</span>' +
-        (conAsist ? '<span class="rank__num">Asist.</span>' : '') +
-        '<span class="rank__num">Premio</span>' +
-        '<span class="rank__num">' + etiqueta + '</span></div>';
+        '<span class="rank__num">Asist.</span>' +
+        '<span class="rank__num">Entrega</span>' +
+        '<span class="rank__num">Cartón</span></div>';
       var body = lista.map(function (f, i) {
         var medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : (i + 1);
-        var bar = Math.max(4, Math.min(100, f[campo] || 0));
-        var cumpleAsist = (f.asist == null || f.asist >= ASIST_MIN);
-        var premio = cumpleAsist ? premioPara(campo, f[campo]) : null;
-        var premioHTML = premio == null
-          ? '<span class="rank__num rank__prize rank__prize--none"' +
-            (!cumpleAsist ? ' title="No cobra premio: asistencia menor al ' + ASIST_MIN + '%"' : '') + '>—</span>'
-          : '<span class="rank__num rank__prize">💰 ' + fmtPremio(premio) + '</span>';
-        var asistHTML = "";
-        if (conAsist) {
-          asistHTML = f.asist == null
-            ? '<span class="rank__num rank__prize--none">—</span>'
-            : '<span class="rank__num"><span class="chip ' + (f.asist >= ASIST_MIN ? "chip--ok" : "chip--low") + '"' +
-              ' title="' + f.diasTrab + ' repartos en ' + habiles + ' días hábiles">' + f.asist + '%</span></span>';
-        }
+        var bar = Math.max(4, Math.min(100, f.efE || 0));
+        var asistHTML = f.asist == null
+          ? '<span class="rank__num rank__prize--none">—</span>'
+          : '<span class="rank__num"><span class="chip ' + (f.asist >= ASIST_MIN ? "chip--ok" : "chip--low") + '"' +
+            ' title="' + f.diasTrab + ' repartos en ' + habiles + ' días hábiles">' + f.asist + '%</span></span>';
         return '<button class="rank__row" data-fletero="' + f.nombre.replace(/"/g, "&quot;") + '">' +
           '<span class="rank__pos">' + medal + '</span>' +
           '<span class="rank__name"><b>' + f.nombre + '</b>' +
             (f.zona ? '<em>' + f.zona + '</em>' : '') +
-            '<i class="rank__track"><i class="rank__fill rank__fill--' + claseColor(f[campo]) + '" style="width:2%" data-w="' + bar + '"></i></i>' +
+            '<i class="rank__track"><i class="rank__fill rank__fill--' + claseColor(f.efE) + '" style="width:2%" data-w="' + bar + '"></i></i>' +
           '</span>' +
           asistHTML +
-          premioHTML +
-          '<span class="rank__num">' + chip(f[campo]) + '</span>' +
+          '<span class="rank__num">' + chip(f.efE) + '</span>' +
+          '<span class="rank__num">' + chip(f.efR) + '</span>' +
         '</button>';
       }).join("");
       tabla.innerHTML =
         '<h2 class="rank__title">' + titulo + '</h2>' +
-        '<div class="rank__grid ' + (conAsist ? "rank__grid--asist" : "rank__grid--simple") + '">' + head + body + '</div>' +
-        '<p class="rank__hint">Tocá un fletero para ver su detalle.' +
-        (premiosTxt ? ' ' + premiosTxt : '') + '</p>';
+        '<div class="rank__grid rank__grid--triple">' + head + body + '</div>' +
+        '<p class="rank__hint">Tocá un fletero para ver su detalle.</p>';
       return tabla;
     }
 
@@ -708,12 +677,8 @@
       cont.appendChild(fila);
     }
 
-    var rankE = tablaRanking("🚚 Ranking · Efectividad de entrega · total " + mesNombre, "efE", "Entrega", true,
-      CONFIG.premiosHabilitados ? "💰 Premios por efectividad de entrega: de 90% a 94,99% cobrás <b>$50.000</b> · de 95% a 100% cobrás <b>$100.000</b>. Requisito: " + ASIST_MIN + "% de asistencia o más." : "");
-    var rankR = tablaRanking("📦 Ranking · Retorno de cartón · total " + mesNombre, "efR", "Cartón", false,
-      CONFIG.premiosHabilitados ? "💰 Premios por retorno de cartón: de 60% a 69,99% cobrás <b>$50.000</b> · de 70% a 79,99% cobrás <b>$100.000</b> · de 80% a 100% cobrás <b>$150.000</b>. Requisito: " + ASIST_MIN + "% de asistencia o más." : "");
-    if (rankE) cont.appendChild(rankE);
-    if (rankR) cont.appendChild(rankR);
+    var rank = tablaRanking("🚚 Ranking de fleteros · total " + mesNombre);
+    if (rank) cont.appendChild(rank);
 
     return cont;
   }
