@@ -1,0 +1,68 @@
+name: Actualizar panel de fleteros
+
+on:
+  schedule:
+    # Hora argentina (UTC-3, sin horario de verano). 3 intentos por turno porque
+    # los cron gratis de GitHub a veces llegan tarde o no disparan; el robot solo
+    # baja de verdad una vez al dia (skip inteligente), asi los reintentos saltan.
+    - cron: "20 10 * * 1-5"   # 07:20 ART (manana)
+    - cron: "50 10 * * 1-5"   # 07:50 ART
+    - cron: "20 11 * * 1-5"   # 08:20 ART
+    - cron: "20 17 * * 1-5"   # 14:20 ART (tarde, red de seguridad)
+    - cron: "50 17 * * 1-5"   # 14:50 ART
+    - cron: "20 18 * * 1-5"   # 15:20 ART
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Hora argentina
+        shell: powershell
+        run: tzutil /s "Argentina Standard Time"
+
+      # Ventana de cierre (dias 8-15): re-baja el MES ANTERIOR completo y, si ya
+      # estan todos los camiones cerrados, lo marca definitivo (deja de re-bajarlo).
+      - name: Refrescar mes anterior (cierre de camiones)
+        shell: powershell
+        env:
+          GESCOM_REALM: ${{ secrets.GESCOM_REALM }}
+          GESCOM_USUARIO: ${{ secrets.GESCOM_USUARIO }}
+          GESCOM_CLAVE: ${{ secrets.GESCOM_CLAVE }}
+        run: |
+          $dia = [int](Get-Date -Format "dd")
+          if ($dia -ge 8 -and $dia -le 15) {
+            $mesAnt = (Get-Date -Day 1).AddMonths(-1).ToString("yyyy-MM")
+            $env:FORCE_MES = $mesAnt
+            Write-Output ("Ventana de cierre (dia " + $dia + "): refrescando mes anterior " + $mesAnt)
+            powershell -NoProfile -File robot-nube.ps1
+          } else {
+            Write-Output ("Dia " + $dia + ": fuera de la ventana de cierre, no se refresca el mes anterior")
+          }
+
+      - name: Correr robot (API Gescom)
+        shell: powershell
+        env:
+          GESCOM_REALM: ${{ secrets.GESCOM_REALM }}
+          GESCOM_USUARIO: ${{ secrets.GESCOM_USUARIO }}
+          GESCOM_CLAVE: ${{ secrets.GESCOM_CLAVE }}
+        run: powershell -NoProfile -File robot-nube.ps1
+
+      - name: Publicar cambios
+        shell: powershell
+        run: |
+          git config user.name "robot-tp"
+          git config user.email "robot-tp@users.noreply.github.com"
+          git add data.js historial-meses.json
+          git diff --cached --quiet
+          if ($LASTEXITCODE -ne 0) {
+            git commit -m ("Datos del " + (Get-Date -Format "dd/MM/yyyy HH:mm"))
+            git push
+          } else {
+            Write-Output "Sin cambios: no hace falta publicar"
+          }
