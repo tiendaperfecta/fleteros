@@ -117,11 +117,11 @@
                 },
     "2026-09":  {
                     "premiosTotal":  0,
-                    "boletas":  5734,
-                    "entregadas":  5487,
-                    "repartos":  154,
-                    "boletasSac":  5108,
-                    "clientesSac":  3786,
+                    "boletas":  6086,
+                    "entregadas":  5822,
+                    "repartos":  164,
+                    "boletasSac":  5407,
+                    "clientesSac":  4016,
                     "cartonesSacados":  5080,
                     "efGeneral":  95.7,
                     "ranking":  [
@@ -129,47 +129,47 @@
                                         "nombre":  "Marcelo Javier Acuña",
                                         "repartos":  7,
                                         "asist":  32,
-                                        "efE":  98.5,
+                                        "efE":  98.7,
                                         "efC":  67.3,
                                         "premio":  0
                                     },
                                     {
                                         "nombre":  "Leo Damian Moncada",
-                                        "repartos":  13,
-                                        "asist":  59,
-                                        "efE":  98.4,
+                                        "repartos":  14,
+                                        "asist":  64,
+                                        "efE":  98.3,
                                         "efC":  58.6,
                                         "premio":  0
                                     },
                                     {
                                         "nombre":  "Edgardo Jacinto Gomez",
-                                        "repartos":  17,
-                                        "asist":  77,
-                                        "efE":  97.9,
+                                        "repartos":  18,
+                                        "asist":  82,
+                                        "efE":  98,
                                         "efC":  83.3,
                                         "premio":  0
                                     },
                                     {
                                         "nombre":  "Mario Luis Gastiarena",
-                                        "repartos":  14,
-                                        "asist":  64,
+                                        "repartos":  15,
+                                        "asist":  68,
                                         "efE":  97.5,
                                         "efC":  64.7,
                                         "premio":  0
                                     },
                                     {
                                         "nombre":  "Diego Andrés Martorello",
-                                        "repartos":  20,
-                                        "asist":  91,
-                                        "efE":  96.8,
+                                        "repartos":  23,
+                                        "asist":  100,
+                                        "efE":  96.9,
                                         "efC":  63.3,
                                         "premio":  0
                                     },
                                     {
                                         "nombre":  "Ezequiel Dario Gargan",
-                                        "repartos":  14,
-                                        "asist":  64,
-                                        "efE":  95.9,
+                                        "repartos":  15,
+                                        "asist":  68,
+                                        "efE":  96.1,
                                         "efC":  60.3,
                                         "premio":  0
                                     },
@@ -177,7 +177,7 @@
                                         "nombre":  "Rodrigo Martin Soto",
                                         "repartos":  14,
                                         "asist":  64,
-                                        "efE":  94.5,
+                                        "efE":  94.8,
                                         "efC":  75.3,
                                         "premio":  0
                                     },
@@ -190,26 +190,26 @@
                                         "premio":  0
                                     },
                                     {
-                                        "nombre":  "Alejandro Fabian Maiorano",
-                                        "repartos":  14,
-                                        "asist":  64,
-                                        "efE":  93.8,
-                                        "efC":  63.8,
-                                        "premio":  0
-                                    },
-                                    {
                                         "nombre":  "Emanuel Valentino Cossu",
-                                        "repartos":  14,
-                                        "asist":  64,
+                                        "repartos":  15,
+                                        "asist":  68,
                                         "efE":  93.5,
                                         "efC":  80.8,
                                         "premio":  0
                                     },
                                     {
+                                        "nombre":  "Alejandro Fabian Maiorano",
+                                        "repartos":  14,
+                                        "asist":  64,
+                                        "efE":  93,
+                                        "efC":  63.8,
+                                        "premio":  0
+                                    },
+                                    {
                                         "nombre":  "Leandro Martín Cossu",
-                                        "repartos":  13,
-                                        "asist":  59,
-                                        "efE":  93.1,
+                                        "repartos":  15,
+                                        "asist":  68,
+                                        "efE":  92.4,
                                         "efC":  67.7,
                                         "premio":  0
                                     },
@@ -217,16 +217,16 @@
                                         "nombre":  "Algañaraz German Marcelo",
                                         "repartos":  4,
                                         "asist":  18,
-                                        "efE":  90.9,
+                                        "efE":  92.3,
                                         "efC":  61,
                                         "premio":  0
                                     }
                                 ],
-                    "plataRech":  14876727,
-                    "clientesEnt":  3708,
+                    "plataRech":  15405006,
+                    "clientesEnt":  3936,
                     "cartonesVueltos":  3500,
-                    "actualizado":  "2026-09-17",
-                    "boletasRech":  157,
+                    "actualizado":  "2026-09-18",
+                    "boletasRech":  166,
                     "cierreFinal":  false,
                     "cartonGeneral":  68.9,
                     "fleteros":  12
