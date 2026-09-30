@@ -52,32 +52,21 @@ if ($EN_NUBE -and $env:GITHUB_EVENT_NAME -eq "schedule" -and -not $env:FORCE_MES
   }
 }
 
-# --- Credenciales (secretos GESCOM_* en la nube; archivo local si no) -------
-$credU = ""; $credC = ""; $credR = ""
-if ($env:GESCOM_USUARIO) {
-  $credU = ([string]$env:GESCOM_USUARIO).Trim()
-  $credC = ([string]$env:GESCOM_CLAVE).Trim()
-  $credR = ([string]$env:GESCOM_REALM).Trim()
-} else {
-  $credArch = Join-Path $CARPETA_PROYECTO "robot\gescom-api.txt"
-  foreach ($lin in Get-Content $credArch -Encoding UTF8) {
-    $par = $lin.Split("=", 2)
-    if ($par.Count -eq 2) {
-      if ($par[0].Trim() -eq "USUARIO") { $credU = $par[1].Trim() }
-      if ($par[0].Trim() -eq "CLAVE") { $credC = $par[1].Trim() }
-      if ($par[0].Trim() -eq "REALM") { $credR = $par[1].Trim() }
-    }
-  }
-}
-if (-not $credU -or -not $credC -or -not $credR) { Log "ERROR: faltan credenciales de Gescom"; exit 1 }
+# --- De donde salen los datos ------------------------------------------------
+# DESDE EL 30/9/2026 ESTE ROBOT YA NO LE PREGUNTA A GESCOM: lee de la BASE PROPIA
+# (worker "base", repo tiendaperfecta/base), por su ventanilla /gescom/, que
+# contesta con la misma forma que la API de Gescom. La base es lo unico que
+# consulta a Gescom (con horario y tope). Los items de cada reparto (cajas de
+# carton) la base los pide cuando el reparto CIERRA: los repartos abiertos
+# todavia no los tienen (Post-Api devuelve vacio para esos).
+# La clave es el secreto BASE_CLAVE; sin ella el robot NO corre.
+$CLAVE_BASE = ([string]$env:BASE_CLAVE).Trim()
+if (-not $CLAVE_BASE) { Log "ERROR: falta el secreto BASE_CLAVE (clave de lectura de la base propia)"; exit 1 }
 
 $script:tokenApi = $null
-function Get-TokenGescom {
-  $cuerpo = @{ grant_type = "password"; client_id = "gcw-web-api"; username = $credU; password = $credC }
-  $script:tokenApi = (Invoke-RestMethod -Method Post -Uri ("https://auth.gescom.online/realms/" + $credR + "/protocol/openid-connect/token") -Body $cuerpo -TimeoutSec 30).access_token
-}
+function Get-TokenGescom { $script:tokenApi = $CLAVE_BASE }
 Get-TokenGescom
-$BASE_API = "https://tiendaperfecta.gescom.online/data/cmd"
+$BASE_API = "https://base.tienda-perfecta.workers.dev/gescom/data/cmd"
 
 function Get-Api($ruta) {
   # Listados: GET con querystring. Reintenta con espera creciente (el server
@@ -89,7 +78,8 @@ function Get-Api($ruta) {
       return Invoke-RestMethod -Uri "$BASE_API/$ruta" -Headers @{ Authorization = "Bearer $script:tokenApi" } -TimeoutSec 120
     } catch {
       $st = 0; try { $st = [int]$_.Exception.Response.StatusCode } catch {}
-      if ($st -eq 401) { Get-TokenGescom; continue }
+      # 404 = la base no tiene ese dato; 401 = clave equivocada: reintentar no sirve
+      if ($st -eq 404 -or $st -eq 401) { throw ("la base respondio " + $st + " para " + $ruta.Split('?')[0]) }
       Log "  reintento ($st) $($ruta.Split('?')[0])"
     }
   }
@@ -106,7 +96,8 @@ function Post-Api($ruta, $cuerpoObj) {
       return Invoke-RestMethod -Uri "$BASE_API/$ruta" -Method Post -Headers @{ Authorization = "Bearer $script:tokenApi" } -Body $json -ContentType "application/json" -TimeoutSec 60
     } catch {
       $st = 0; try { $st = [int]$_.Exception.Response.StatusCode } catch {}
-      if ($st -eq 401) { Get-TokenGescom; continue }
+      # 404 = la base todavia no tiene ese dato (ej. items de un reparto abierto)
+      if ($st -eq 404 -or $st -eq 401) { return $null }
     }
   }
   return $null

@@ -31,9 +31,8 @@ jobs:
       - name: Refrescar mes anterior (cierre de camiones)
         shell: powershell
         env:
-          GESCOM_REALM: ${{ secrets.GESCOM_REALM }}
-          GESCOM_USUARIO: ${{ secrets.GESCOM_USUARIO }}
-          GESCOM_CLAVE: ${{ secrets.GESCOM_CLAVE }}
+          # Lee de la base propia (worker base), no de Gescom, desde el 30/9/2026
+          BASE_CLAVE: ${{ secrets.BASE_CLAVE }}
         run: |
           $dia = [int](Get-Date -Format "dd")
           if ($dia -ge 8 -and $dia -le 15) {
@@ -48,9 +47,8 @@ jobs:
       - name: Correr robot (API Gescom)
         shell: powershell
         env:
-          GESCOM_REALM: ${{ secrets.GESCOM_REALM }}
-          GESCOM_USUARIO: ${{ secrets.GESCOM_USUARIO }}
-          GESCOM_CLAVE: ${{ secrets.GESCOM_CLAVE }}
+          # Lee de la base propia (worker base), no de Gescom, desde el 30/9/2026
+          BASE_CLAVE: ${{ secrets.BASE_CLAVE }}
         run: powershell -NoProfile -File robot-nube.ps1
 
       - name: Publicar cambios
