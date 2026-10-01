@@ -230,5 +230,81 @@
                     "cierreFinal":  false,
                     "cartonGeneral":  66.5,
                     "fleteros":  12
+                },
+    "2026-10":  {
+                    "premiosTotal":  0,
+                    "boletas":  12,
+                    "entregadas":  12,
+                    "repartos":  7,
+                    "boletasSac":  385,
+                    "clientesSac":  258,
+                    "cartonesSacados":  0,
+                    "efGeneral":  100,
+                    "ranking":  [
+                                    {
+                                        "nombre":  "Emanuel Valentino Cossu",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    },
+                                    {
+                                        "nombre":  "Rodrigo Martin Soto",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    },
+                                    {
+                                        "nombre":  "Leo Damian Moncada",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    },
+                                    {
+                                        "nombre":  "Algañaraz German Marcelo",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    },
+                                    {
+                                        "nombre":  "Enzo Julián Rizzoni",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    },
+                                    {
+                                        "nombre":  "Diego Andrés Martorello",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    },
+                                    {
+                                        "nombre":  "Mario Luis Gastiarena",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0
+                                    }
+                                ],
+                    "plataRech":  0,
+                    "clientesEnt":  258,
+                    "cartonesVueltos":  0,
+                    "actualizado":  "2026-10-01",
+                    "boletasRech":  0,
+                    "cierreFinal":  false,
+                    "cartonGeneral":  0,
+                    "fleteros":  7
                 }
 }
