@@ -326,7 +326,7 @@
                                         "repartos":  4,
                                         "asist":  18,
                                         "efE":  100,
-                                        "efC":  22.9,
+                                        "efC":  47.5,
                                         "premio":  0
                                     },
                                     {
@@ -340,11 +340,11 @@
                                 ],
                     "plataRech":  82617,
                     "clientesEnt":  598,
-                    "cartonesVueltos":  189,
+                    "cartonesVueltos":  218,
                     "actualizado":  "2026-10-02",
                     "boletasRech":  0,
                     "cierreFinal":  false,
-                    "cartonGeneral":  18.2,
+                    "cartonGeneral":  21,
                     "fleteros":  12
                 }
 }
