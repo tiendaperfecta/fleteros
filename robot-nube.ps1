@@ -38,16 +38,31 @@ function Log($msg) {
 }
 Log "================ INICIO (NUBE) ================"
 
-# --- Bajada inteligente: una sola por dia -----------------------------------
+# --- Bajada inteligente: una por turno (manana y tarde) ---------------------
+# ANTES: alcanzaba con que el encabezado tuviera la fecha de hoy para saltearse.
+# Como la corrida de la manana SIEMPRE estampa la fecha (aunque los repartos del
+# dia todavia no esten cargados), los 3 intentos de la tarde -la red de
+# seguridad- se salteaban siempre y el dia recien aparecia al otro dia. Peor aun
+# cuando el cron gratis de GitHub llega tarde: el 5/10/2026 los turnos de la
+# tarde dispararon 20:12 y 20:23, con todo cerrado, y no bajaron nada.
+# AHORA: se saltea solo si ya se bajo en ESTE turno (manana < 12 h, tarde >= 12 h),
+# asi el turno de la tarde vuelve a bajar y cierra el dia. Maximo 2 bajadas diarias.
 if ($EN_NUBE -and $env:GITHUB_EVENT_NAME -eq "schedule" -and -not $env:FORCE_MES) {
   $dataJsRepo = Join-Path $CARPETA_PROYECTO "data.js"
   if (Test-Path $dataJsRepo) {
     $cab = (Get-Content $dataJsRepo -TotalCount 3 -Encoding UTF8) -join " "
-    $hoyStr = (Get-Date -Format "yyyy-MM-dd")
-    if ($cab -match ("Ultima actualizacion: " + [regex]::Escape($hoyStr))) {
-      Log "Datos de hoy ($hoyStr) ya publicados: no hace falta bajar de nuevo"
-      Log "================ FIN (NUBE) ================"
-      exit 0
+    $ahora = Get-Date
+    $hoyStr = $ahora.ToString("yyyy-MM-dd")
+    $turnoAhora = if ($ahora.Hour -lt 12) { "manana" } else { "tarde" }
+    if ($cab -match ("Ultima actualizacion: " + [regex]::Escape($hoyStr) + " (\d{2}):(\d{2})")) {
+      $horaPrevia = $Matches[1] + ":" + $Matches[2]
+      $turnoPrevio = if ([int]$Matches[1] -lt 12) { "manana" } else { "tarde" }
+      if ($turnoPrevio -eq $turnoAhora) {
+        Log "Ya se bajo hoy en el turno de la $turnoAhora ($hoyStr $horaPrevia): no hace falta bajar de nuevo"
+        Log "================ FIN (NUBE) ================"
+        exit 0
+      }
+      Log "La ultima bajada fue $horaPrevia (turno $turnoPrevio) y ahora es turno ${turnoAhora}: se vuelve a bajar para cerrar el dia"
     }
   }
 }
