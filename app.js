@@ -612,6 +612,7 @@
     }
 
     // Datos base para los rankings (total del mes en curso)
+    var statsRank = (window.__TP_DATA__ && window.__TP_DATA__.estadisticasFletero) || {};
     var filas = nombres.map(function (n) {
       var regsMes = delMes(datos.porFletero[n].regs);
       var p = promedioPeriodo(regsMes);
@@ -626,7 +627,16 @@
         else if (r.entregas_asignadas > 0) trab += 1;
       });
       var asist = habiles > 0 ? Math.min(100, Math.round(100 * trab / habiles)) : null;
-      return { nombre: n, zona: datos.porFletero[n].zona, efE: pct(p.efE), efR: pct(p.efR), asist: asist, diasTrab: trab };
+      // Rechazo: misma vara que el analisis (boleta caida completa, min 20
+      // boletas). Sin redondear, para no empatar fleteros distintos.
+      var sx = statsRank[n] || {};
+      var sacR = sx.compSac || 0, rechR = sx.recBol || 0;
+      return {
+        nombre: n, zona: datos.porFletero[n].zona,
+        efE: pct(p.efE), efR: pct(p.efR), asist: asist, diasTrab: trab,
+        rechPct: (sacR >= 20 && rechR > 0) ? (100 * rechR / sacR) : null,
+        rechImp: sx.impRech || 0
+      };
     });
 
     // Premios: ELIMINADOS por ahora (pedido de Lucas, 2/9/2026 — todavía no
@@ -644,6 +654,16 @@
         '<span class="rank__num">Asist.</span>' +
         '<span class="rank__num">Entrega</span>' +
         '<span class="rank__num">Cartón</span></div>';
+      // Renglon chico debajo del nombre: la zona (hoy siempre vacia) y el
+      // rechazo del mes, el mismo par que la tarjeta del analisis.
+      function subRank(f) {
+        var partes = [];
+        if (f.zona) { partes.push(f.zona); }
+        if (f.rechPct != null) {
+          partes.push('Rechazo ' + Math.round(f.rechPct) + '% · ' + fmtPlata(f.rechImp));
+        }
+        return partes.join(' · ');
+      }
       var body = lista.map(function (f, i) {
         var medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : (i + 1);
         var bar = Math.max(4, Math.min(100, f.efE || 0));
@@ -654,7 +674,7 @@
         return '<button class="rank__row" data-fletero="' + f.nombre.replace(/"/g, "&quot;") + '">' +
           '<span class="rank__pos">' + medal + '</span>' +
           '<span class="rank__name"><b>' + f.nombre + '</b>' +
-            (f.zona ? '<em>' + f.zona + '</em>' : '') +
+            (subRank(f) ? '<em>' + subRank(f) + '</em>' : '') +
             '<i class="rank__track"><i class="rank__fill rank__fill--' + claseColor(f.efE) + '" style="width:2%" data-w="' + bar + '"></i></i>' +
           '</span>' +
           asistHTML +
