@@ -249,7 +249,10 @@
                                         "asist":  82,
                                         "efE":  99,
                                         "efC":  77.1,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  5,
+                                        "compSac":  520,
+                                        "impRech":  194219
                                     },
                                     {
                                         "nombre":  "Emanuel Valentino Cossu",
@@ -257,7 +260,10 @@
                                         "asist":  91,
                                         "efE":  98.1,
                                         "efC":  88.3,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  9,
+                                        "compSac":  794,
+                                        "impRech":  993320
                                     },
                                     {
                                         "nombre":  "Mario Luis Gastiarena",
@@ -265,7 +271,10 @@
                                         "asist":  86,
                                         "efE":  97.8,
                                         "efC":  83.8,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  13,
+                                        "compSac":  721,
+                                        "impRech":  1166231
                                     },
                                     {
                                         "nombre":  "Marcelo Javier Acuña",
@@ -273,7 +282,10 @@
                                         "asist":  95,
                                         "efE":  97.7,
                                         "efC":  84.9,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  14,
+                                        "compSac":  714,
+                                        "impRech":  668379
                                     },
                                     {
                                         "nombre":  "Leandro Martín Cossu",
@@ -281,7 +293,10 @@
                                         "asist":  95,
                                         "efE":  97.4,
                                         "efC":  72.6,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  9,
+                                        "compSac":  708,
+                                        "impRech":  576248
                                     },
                                     {
                                         "nombre":  "Leo Damian Moncada",
@@ -289,7 +304,10 @@
                                         "asist":  95,
                                         "efE":  97.3,
                                         "efC":  70.4,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  15,
+                                        "compSac":  719,
+                                        "impRech":  1072456
                                     },
                                     {
                                         "nombre":  "Algañaraz German Marcelo",
@@ -297,7 +315,10 @@
                                         "asist":  86,
                                         "efE":  96.6,
                                         "efC":  74,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  20,
+                                        "compSac":  818,
+                                        "impRech":  1081395
                                     },
                                     {
                                         "nombre":  "Edgardo Jacinto Gomez",
@@ -305,7 +326,10 @@
                                         "asist":  100,
                                         "efE":  96.4,
                                         "efC":  89.4,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  9,
+                                        "compSac":  901,
+                                        "impRech":  2420422
                                     },
                                     {
                                         "nombre":  "Diego Andrés Martorello",
@@ -313,7 +337,10 @@
                                         "asist":  100,
                                         "efE":  96.3,
                                         "efC":  79.4,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  45,
+                                        "compSac":  1436,
+                                        "impRech":  989243
                                     },
                                     {
                                         "nombre":  "Ezequiel Dario Gargan",
@@ -321,7 +348,10 @@
                                         "asist":  82,
                                         "efE":  96,
                                         "efC":  75.8,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  15,
+                                        "compSac":  718,
+                                        "impRech":  1222634
                                     },
                                     {
                                         "nombre":  "Alejandro Fabian Maiorano",
@@ -329,7 +359,10 @@
                                         "asist":  95,
                                         "efE":  95.4,
                                         "efC":  79.9,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  15,
+                                        "compSac":  634,
+                                        "impRech":  811363
                                     },
                                     {
                                         "nombre":  "Rodrigo Martin Soto",
@@ -337,7 +370,10 @@
                                         "asist":  91,
                                         "efE":  95.3,
                                         "efC":  78.2,
-                                        "premio":  0
+                                        "premio":  0,
+                                        "recBol":  21,
+                                        "compSac":  602,
+                                        "impRech":  1709598
                                     }
                                 ],
                     "efGeneral":  96.9,
