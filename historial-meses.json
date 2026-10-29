@@ -241,7 +241,7 @@
                     "clientesSac":  6438,
                     "entregadas":  9801,
                     "premiosTotal":  0,
-                    "cartonesSacados":  9230,
+                    "cartonesSacados":  9398,
                     "ranking":  [
                                     {
                                         "nombre":  "Enzo Julián Rizzoni",
@@ -304,7 +304,7 @@
                                         "repartos":  26,
                                         "asist":  100,
                                         "efE":  96.4,
-                                        "efC":  89.9,
+                                        "efC":  89.4,
                                         "premio":  0
                                     },
                                     {
@@ -312,7 +312,7 @@
                                         "repartos":  38,
                                         "asist":  100,
                                         "efE":  96.3,
-                                        "efC":  78.7,
+                                        "efC":  79.4,
                                         "premio":  0
                                     },
                                     {
@@ -328,7 +328,7 @@
                                         "repartos":  21,
                                         "asist":  95,
                                         "efE":  95.4,
-                                        "efC":  79.7,
+                                        "efC":  79.9,
                                         "premio":  0
                                     },
                                     {
@@ -345,7 +345,7 @@
                     "boletasRech":  190,
                     "boletasSac":  9285,
                     "plataRech":  12905508,
-                    "cartonGeneral":  79.7,
-                    "cartonesVueltos":  7353
+                    "cartonGeneral":  79.8,
+                    "cartonesVueltos":  7497
                 }
 }
