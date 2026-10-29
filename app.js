@@ -741,7 +741,9 @@
       return cont;
     }
 
-    // Plata rechazada del mes (los montos facturados siguen privados)
+    // Plata rechazada del mes. OJO: desde el 29/10/2026 el resumen general y
+    // el detalle de cada fletero muestran tambien el % sobre lo facturado, asi
+    // que el facturado deja de ser privado: se deduce como importe / porcentaje.
     if (an.importe) {
       var stat = el("div", "chart reveal");
       stat.innerHTML =
