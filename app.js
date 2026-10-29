@@ -412,12 +412,16 @@
     function dato(k, v) {
       return '<div class="cierre__dato"><span>' + k + '</span><b>' + v + '</b></div>';
     }
+    // Meses cerrados antes del 29/10/2026 no guardaron el facturado: ahi
+    // pctCierre es null y la celda muestra solo el monto.
+    var pctCierre = pctPlata(ma.plataRech, ma.facturado);
     var filas =
       dato("Repartos", fmtNum(ma.repartos)) +
       dato("Retorno de cartón", fmtPctN(ma.cartonGeneral)) +
       dato("Boletas entregadas", fmtNum(ma.boletasEnt) + " / " + fmtNum(ma.boletasSac)) +
       dato("Clientes entregados", fmtNum(ma.clientesEnt) + " / " + fmtNum(ma.clientesSac)) +
-      dato("Plata rechazada", fmtPlata(ma.plataRech)) +
+      dato("Plata rechazada", fmtPlata(ma.plataRech) +
+        (pctCierre == null ? "" : ' · ' + fmtPctPlata(pctCierre))) +
       dato("Premios pagados", fmtPlata(ma.premiosTotal));
     var card = el("div", "cierre reveal");
     card.innerHTML =
@@ -745,11 +749,14 @@
     // el detalle de cada fletero muestran tambien el % sobre lo facturado, asi
     // que el facturado deja de ser privado: se deduce como importe / porcentaje.
     if (an.importe) {
+      var pctAn = pctPlata(an.importe, an.facturado);
       var stat = el("div", "chart reveal");
       stat.innerHTML =
         '<h2 class="chart__title">💸 Plata rechazada en ' + mesNombre + '</h2>' +
         '<div class="bigmoney">' + fmtPlata(an.importe) + '</div>' +
-        '<p class="chart__note">Suma de todas las notas de crédito por rechazo del mes, productos sueltos incluidos (no los canjes).</p>';
+        '<p class="chart__note">' +
+          (pctAn == null ? '' : '<b>' + fmtPctPlata(pctAn) + ' de lo facturado del mes.</b> ') +
+          'Suma de todas las notas de crédito por rechazo del mes, productos sueltos incluidos (no los canjes).</p>';
       cont.appendChild(stat);
     }
 

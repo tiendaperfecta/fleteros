@@ -576,6 +576,10 @@ if ($ma) {
   $maCSac = 0; if ($null -ne $ma.clientesSac) { $maCSac = [int]$ma.clientesSac }
   $maCEnt = 0; if ($null -ne $ma.clientesEnt) { $maCEnt = [int]$ma.clientesEnt }
   $maPlata = 0; if ($null -ne $ma.plataRech) { $maPlata = [long]$ma.plataRech }
+  # Los meses cerrados antes del 29/10/2026 no tienen "facturado" y no se
+  # re-bajan (estan marcados cierreFinal): queda en 0 y el panel no muestra
+  # el % en vez de inventar uno.
+  $maFact = 0; if ($null -ne $ma.facturado) { $maFact = [long]$ma.facturado }
   $maReps = 0; if ($null -ne $ma.repartos) { $maReps = [int]$ma.repartos }
   $maFlet = 0; if ($null -ne $ma.fleteros) { $maFlet = [int]$ma.fleteros }
   $maPremios = 0; if ($null -ne $ma.premiosTotal) { $maPremios = [long]$ma.premiosTotal }
@@ -595,6 +599,7 @@ if ($ma) {
     ',"efGeneral":' + (([string]$maEf) -replace ",", ".") + ',"cartonGeneral":' + (([string]$maCarton) -replace ",", ".") +
     ',"repartos":' + $maReps + ',"boletasEnt":' + ($maBSac - $maBRech) + ',"boletasSac":' + $maBSac +
     ',"clientesEnt":' + $maCEnt + ',"clientesSac":' + $maCSac + ',"plataRech":' + $maPlata +
+    ',"facturado":' + $maFact +
     ',"premiosTotal":' + $maPremios + ',"fleteros":' + $maFlet + ',"ranking":[' + ($maRank -join ",") + ']}'
   [void]$sb.AppendLine("window.__TP_DATA__.mesAnterior = " + $maJson + ";")
 }
@@ -645,7 +650,8 @@ $hist[$mesActual] = @{
   boletasSac = $bolSac; boletasRech = $bolCompTot
   clientesSac = $cliSac; clientesEnt = $cliEnt
   cartonGeneral = $cartGen; cartonesSacados = $mCA; cartonesVueltos = $mCR
-  plataRech = [long]$anImporte; premiosTotal = $premiosTotalMes; fleteros = $nFleteros
+  plataRech = [long]$anImporte; facturado = [long]$anFacturado
+  premiosTotal = $premiosTotalMes; fleteros = $nFleteros
   ranking = $rankFletero
   cierreFinal = $esCierreFinal
   actualizado = (Get-Date -Format "yyyy-MM-dd")

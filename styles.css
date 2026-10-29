@@ -372,14 +372,17 @@ main { max-width: 1080px; margin: 0 auto; padding: 22px 20px 60px; }
 .cierre__ef { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .cierre__efnum { font-size: 46px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
 .cierre__eflbl { font-size: 12.5px; opacity: .92; font-weight: 600; line-height: 1.3; }
-.cierre__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+/* minmax(0,1fr): sin esto las columnas no bajan del ancho del contenido y la
+   grilla desborda a lo ancho en pantallas de 320px. */
+.cierre__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
 .cierre__dato {
   background: rgba(255,255,255,.1); border-radius: var(--r-sm);
   padding: 9px 13px; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  flex-wrap: wrap; min-width: 0;
 }
 .cierre__dato span { font-size: 12px; opacity: .9; font-weight: 600; }
 .cierre__dato b { font-size: 14.5px; font-weight: 800; }
-@media (min-width: 720px) { .cierre__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 720px) { .cierre__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .cierre__ver {
   display: block; width: 100%; margin-top: 14px; padding: 12px;
   border: none; border-radius: var(--r-sm); cursor: pointer;
