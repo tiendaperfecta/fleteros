@@ -777,6 +777,26 @@
       return card;
     }
 
+    // % de rechazo por fletero, con la MISMA vara que zona y vendedor: boleta
+    // caida completa (la nota de credito cubre >= 98% del importe) y minimo 20
+    // boletas. No hace falta que el robot lo calcule aparte: compSac/recBol de
+    // estadisticasFletero ya salen de esa misma regla.
+    var stFle = (window.__TP_DATA__ && window.__TP_DATA__.estadisticasFletero) || {};
+    var porFletero = Object.keys(stFle).map(function (n) {
+      var s = stFle[n];
+      var sac = s.compSac || 0, rech = s.recBol || 0;
+      // Sin redondear: si se redondea antes de ordenar, dos fleteros que
+      // muestran el mismo entero quedan ordenados por nombre y no por rechazo.
+      var p = (sac >= 20 && rech > 0) ? (100 * rech / sac) : 0;
+      return {
+        _l: n, _v: p,
+        _t: Math.round(p) + "% <span class='chart__cnt'>(" + rech + " de " + sac + ")</span>"
+      };
+    }).filter(function (f) { return f._v > 0; })
+      .sort(function (a, b) { return b._v - a._v; });
+    var tFle = tarjeta("🚚 % de rechazo por fletero <span class='chart__cnt'>(ventas caídas completas)</span>", porFletero);
+    if (tFle) cont.appendChild(tFle);
+
     var zonas = (an.zonas || []).map(function (z) {
       return { _l: z.nombre, _v: z.pct, _t: Math.round(z.pct) + "% <span class='chart__cnt'>(" + z.rech + " de " + z.sac + ")</span>" };
     });

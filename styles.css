@@ -252,8 +252,11 @@ main { max-width: 1080px; margin: 0 auto; padding: 22px 20px 60px; }
 .rank + .rank { margin-top: 26px; }
 .rank__prize { font-size: 13px; font-weight: 800; color: #1F7A46; white-space: nowrap; }
 /* Tarjetas gráficas de rechazos (barras horizontales) */
-.charts { display: grid; gap: 16px; margin: 6px 0 26px; }
-@media (min-width: 940px) { .charts { grid-template-columns: 1fr 1fr; } }
+/* minmax(0,...): sin columna explicita la grilla se agranda hasta el ancho
+   del contenido y desborda a lo ancho en el celular (lo hacia la tarjeta de
+   proveedores, con nombres largos). */
+.charts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin: 6px 0 26px; }
+@media (min-width: 940px) { .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .chart {
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
   box-shadow: var(--sh); padding: 18px 18px 14px;
