@@ -590,9 +590,15 @@ if ($ma) {
       $rkAsist = 0; if ($null -ne $rk.asist) { $rkAsist = $rk.asist }
       $rkEfC = 0; if ($null -ne $rk.efC) { $rkEfC = $rk.efC }
       $rkPremio = 0; if ($null -ne $rk.premio) { $rkPremio = $rk.premio }
+      # Meses cerrados antes del 29/10/2026 no lo guardaron: van en 0 y el panel
+      # muestra un guion en vez de inventar un 0%.
+      $rkRecB = 0; if ($null -ne $rk.recBol) { $rkRecB = [int]$rk.recBol }
+      $rkCompS = 0; if ($null -ne $rk.compSac) { $rkCompS = [int]$rk.compSac }
+      $rkImpR = 0; if ($null -ne $rk.impRech) { $rkImpR = [long]$rk.impRech }
       $maRank += '{"nombre":"' + (JsonTxt $rk.nombre) + '","repartos":' + ([int]$rk.repartos) +
         ',"asist":' + (([string]$rkAsist) -replace ",", ".") + ',"efE":' + (([string]$rk.efE) -replace ",", ".") +
-        ',"efC":' + (([string]$rkEfC) -replace ",", ".") + ',"premio":' + $rkPremio + '}'
+        ',"efC":' + (([string]$rkEfC) -replace ",", ".") + ',"premio":' + $rkPremio +
+        ',"recBol":' + $rkRecB + ',"compSac":' + $rkCompS + ',"impRech":' + $rkImpR + '}'
     }
   }
   $maJson = '{"clave":"' + $mesAntKey + '","anio":' + $maAnio + ',"mes":' + $maMes +
@@ -640,7 +646,17 @@ $rankFletero = @(foreach ($choK in $flMes.Keys) {
   $asistK = 0; if ($asistCho.ContainsKey($choK)) { $asistK = $asistCho[$choK] }
   $premioK = Calcular-Premio $efK $efCK $asistK
   $premiosTotalMes += $premioK
-  [PSCustomObject]@{ nombre = (NombreMostrar $choK); repartos = $fk.reps; asist = $asistK; efE = $efK; efC = $efCK; premio = $premioK }
+  # Rechazo del mes por fletero (boleta caida COMPLETA y la plata), para que la
+  # tabla de premios muestre las tres estadisticas y no solo entrega y carton.
+  $skK = $statsChofer[$choK]
+  $recBolK = 0; $compSacK = 0
+  if ($skK) {
+    if ($skK.compRech) { $recBolK = $skK.compRech }
+    if ($skK.compSac) { $compSacK = $skK.compSac }
+  }
+  $impRechK = 0; if ($choRechImp.ContainsKey($choK)) { $impRechK = [math]::Round($choRechImp[$choK]) }
+  [PSCustomObject]@{ nombre = (NombreMostrar $choK); repartos = $fk.reps; asist = $asistK; efE = $efK; efC = $efCK; premio = $premioK;
+    recBol = $recBolK; compSac = $compSacK; impRech = $impRechK }
 }) | Sort-Object efE -Descending
 $esCierreFinal = $false
 if ($env:FORCE_MES -and $repAbiertos -eq 0) { $esCierreFinal = $true }

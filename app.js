@@ -496,6 +496,7 @@
     var head =
       '<div class="rank__head"><span>#</span><span>Fletero</span>' +
       '<span class="rank__num">Rep.</span><span class="rank__num">Asist.</span>' +
+      '<span class="rank__num">Rechazo</span>' +
       '<span class="rank__num">Entrega</span>' +
       '<span class="rank__num">Cartón</span><span class="rank__num">Premio</span>' +
       '<span class="rank__firma">Firma</span></div>';
@@ -510,6 +511,18 @@
       // Asistencia: viene del historial; si es un mes viejo se recalcula acá.
       var asist = (f.asist != null) ? f.asist
         : (habiles > 0 ? Math.min(100, Math.round(100 * (f.repartos || 0) / habiles)) : null);
+      // Rechazo del mes: % de boletas caidas completas y la plata. Los meses
+      // cerrados antes del 29/10/2026 no lo tienen guardado: ahi va un guion.
+      var rechHTML;
+      if (f.compSac >= 20 && f.recBol > 0) {
+        rechHTML = '<span class="rank__num rank__rech">' +
+          '<b>' + Math.round(100 * f.recBol / f.compSac) + '%</b>' +
+          '<em><span class="plata-larga">' + fmtPlata(f.impRech || 0) + '</span>' +
+          '<span class="plata-corta">' + fmtMillones(f.impRech || 0) + '</span></em>' +
+        '</span>';
+      } else {
+        rechHTML = '<span class="rank__num rank__prize--none">—</span>';
+      }
       var asistHTML = asist == null
         ? '<span class="rank__num">—</span>'
         : '<span class="rank__num"><span class="chip ' +
@@ -523,6 +536,7 @@
         '</span>' +
         '<span class="rank__num">' + f.repartos + '</span>' +
         asistHTML +
+        rechHTML +
         '<span class="rank__num">' + chip(f.efE) + '</span>' +
         '<span class="rank__num">' + chip(f.efC) + '</span>' +
         premioHTML +
@@ -536,13 +550,14 @@
       '<span class="rank__name"><b>TOTAL A PAGAR</b><em>' + cobran + ' de ' + lista.length + ' fleteros cobran</em></span>' +
       '<span class="rank__num"></span><span class="rank__num"></span>' +
       '<span class="rank__num"></span><span class="rank__num"></span>' +
+      '<span class="rank__num"></span>' +
       '<span class="rank__num rank__prize">' + fmtPlata(totalPremios) + '</span>' +
       '<span class="rank__firma"></span>' +
       '</div>';
     tabla.innerHTML =
       '<h2 class="rank__title">🏁 Así cerró ' + nombreMes + ' · ranking final</h2>' +
       '<div class="rank__grid rank__grid--cierre">' + head + body + filaTotal + '</div>' +
-      '<p class="rank__hint">Asistencia, entrega, cartón y premio definitivos de cada fletero en ' +
+      '<p class="rank__hint">Asistencia, rechazo, entrega, cartón y premio definitivos de cada fletero en ' +
         nombreMesCorto + '. Los premios requieren ' + ASIST_MIN_PREMIO + '% de asistencia o más.</p>';
     cont.appendChild(tabla);
     return cont;
