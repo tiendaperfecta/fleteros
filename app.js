@@ -188,6 +188,16 @@
   function fmtPlata(n) {
     return "$" + String(Math.round(n || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
+  // % de rechazo en plata: lo rechazado sobre lo facturado del mismo periodo.
+  // Devuelve null si no hay facturado (data.js viejo, sin "impFact" por
+  // fletero), asi el indicador no se muestra en vez de mentir un 0%.
+  function pctPlata(rech, fact) {
+    if (!fact || fact <= 0) return null;
+    return Math.round(1000 * (rech || 0) / fact) / 10;
+  }
+  function fmtPctPlata(p) {
+    return p == null ? "—" : String(p).replace(".", ",") + "%";
+  }
   function fmtMillones(n) {
     if (n >= 1000000) return "$" + (Math.round(n / 100000) / 10).toString().replace(".", ",") + "M";
     return "$" + Math.round(n / 1000) + " mil";
@@ -323,6 +333,10 @@
       celdas.push('<div class="avg"><span class="avg__k">Boletas entregadas · ' + mesNombre + '</span><b>' + st.compEnt + ' / ' + st.compSac + '</b></div>');
       celdas.push('<div class="avg"><span class="avg__k">Items rechazados · ' + mesNombre + ' <small>(productos)</small></span><b class="ambar">' + (st.itemsRech || 0) + '</b></div>');
       celdas.push('<div class="avg"><span class="avg__k">Plata rechazada · ' + mesNombre + '</span><b class="rojo">' + fmtPlata(st.impRech || 0) + '</b></div>');
+      var pctFle = pctPlata(st.impRech, st.impFact);
+      if (pctFle != null) {
+        celdas.push('<div class="avg"><span class="avg__k">% de rechazo en plata · ' + mesNombre + ' <small>(sobre lo que cargó)</small></span><b class="rojo">' + fmtPctPlata(pctFle) + '</b></div>');
+      }
     }
     celdas.push('<div class="avg"><span class="avg__k">Cartones de ' + mesNombre + '</span><b>' + promMes.cartones + ' / ' + promMes.cartonesTot + '</b></div>');
     var proms2 = el("div", "avgs reveal");
@@ -554,6 +568,29 @@
     res.appendChild(aR.block);
     cont.appendChild(res);
     cont._rings = [aE.wrap, aR.wrap];
+
+    // Rechazo en plata del mes: cuanto se cayo y que porcentaje de lo facturado
+    // representa. Es la puerta de entrada al analisis completo de rechazos.
+    var anPlata = (window.__TP_DATA__ && window.__TP_DATA__.analisisRechazos) || null;
+    if (anPlata && anPlata.importe) {
+      var pctEmp = pctPlata(anPlata.importe, anPlata.facturado);
+      var money = el("div", "chart chart--link reveal");
+      money.innerHTML =
+        '<h2 class="chart__title">💸 Rechazo en plata · ' + mesNombre + '</h2>' +
+        '<div class="money3">' +
+          '<div><span>Plata rechazada</span><b class="rojo3">' + fmtPlata(anPlata.importe) + '</b></div>' +
+          (pctEmp == null ? "" :
+            '<div><span>% de rechazo</span><b class="rojo3">' + fmtPctPlata(pctEmp) + '</b></div>') +
+        '</div>' +
+        '<p class="chart__note">Notas de crédito por rechazo del mes sobre lo facturado en el mismo período.</p>' +
+        '<p class="chart__more">Tocá acá para ver el análisis completo: zonas, vendedores y clientes →</p>';
+      money.addEventListener("click", function () {
+        seleccionar("__rechazos__");
+        var sel = $("#selector"); if (sel) sel.value = "__general__";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      cont.appendChild(money);
+    }
 
     // Días hábiles (lunes a viernes) del mes, con UN DÍA DE ATRASO: el último día
     // con datos no cuenta porque sus viajes todavía no están cerrados.

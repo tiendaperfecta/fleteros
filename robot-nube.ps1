@@ -300,7 +300,7 @@ Log ("Carton (API): " + $nRepCarton + " repartos con caja de carton, " + $carton
 $motivos = @{}; $motivosPorChofer = @{}; $statsChofer = @{}
 $zonaSac = @{}; $zonaRech = @{}; $vendSac = @{}; $vendRech = @{}; $cliRechAcum = @{}
 $choProvFact = @{}; $choProvRech = @{}; $provFact = @{}; $provRech = @{}
-$choRechImp = @{}
+$choRechImp = @{}; $choFactImp = @{}
 $cliDias = @{}; $facImp = @{}; $refImp = @{}; $facCho = @{}
 $refMotivo = @{}; $choRefs = @{}
 $factTotal = 0.0; $impRechTotal = 0.0
@@ -342,6 +342,10 @@ foreach ($idv in @($ventasPorId.Keys)) {
     $facImp[$idv] += $impTot
     $facCho[$idv] = $chox
     $factTotal += $impTot
+    # Facturado por chofer: misma base que $factTotal, para poder sacar su
+    # % de rechazo en plata (impRech / impFact) sin inventar denominadores.
+    if (-not $choFactImp.ContainsKey($chox)) { $choFactImp[$chox] = 0.0 }
+    $choFactImp[$chox] += $impTot
     if ($loc) { $kz = $loc; if (-not $zonaSac[$kz]) { $zonaSac[$kz] = @{} }; $zonaSac[$kz][$idv] = $true }
     if ($ven) { $kv = $ven; if (-not $vendSac[$kv]) { $vendSac[$kv] = @{} }; $vendSac[$kv][$idv] = $true }
   } else {
@@ -519,10 +523,11 @@ $statsJson = @(foreach ($cho in ($statsChofer.Keys | Sort-Object)) {
   $cs = 0; if ($sx.compSac) { $cs = $sx.compSac }
   $cr2 = 0; if ($sx.compRech) { $cr2 = $sx.compRech }
   $ri9 = 0; if ($choRechImp.ContainsKey($cho)) { $ri9 = [math]::Round($choRechImp[$cho]) }
+  $fi9 = 0; if ($choFactImp.ContainsKey($cho)) { $fi9 = [math]::Round($choFactImp[$cho]) }
   $iRech = 0; if ($itemsRechMes[$cho]) { $iRech = [int][math]::Round($itemsRechMes[$cho]) }
   $nRep = 0; if ($repartosCho[$cho]) { $nRep = $repartosCho[$cho] }
   '"' + (NombreMostrar $cho) + '":{"recTot":' + $sx.recTot + ',"recBol":' + $cr2 + ',"prodSuel":0,"itemsRech":' + $iRech +
-    ',"impRech":' + $ri9 + ',"repartos":' + $nRep + ',"cliSac":' + $sx.cliSac + ',"cliEnt":' + ($sx.cliSac - $sx.recTot) +
+    ',"impRech":' + $ri9 + ',"impFact":' + $fi9 + ',"repartos":' + $nRep + ',"cliSac":' + $sx.cliSac + ',"cliEnt":' + ($sx.cliSac - $sx.recTot) +
     ',"compSac":' + $cs + ',"compEnt":' + ($cs - $cr2) + '}'
 })
 [void]$sb.AppendLine("window.__TP_DATA__.estadisticasFletero = {" + ($statsJson -join ",") + "};")
