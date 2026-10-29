@@ -935,11 +935,44 @@
     }
   }
 
+  // Dias habiles (lun-vie) entre dos fechas ISO, sin contar la primera y
+  // salteando los feriados que publica el robot.
+  function habilesEntre(desdeISO, hastaISO) {
+    var feriados = (window.__TP_DATA__ && window.__TP_DATA__.feriados) || [];
+    var d = new Date(desdeISO + "T12:00:00");
+    var h = new Date(hastaISO + "T12:00:00");
+    var n = 0, tope = 0;
+    while (d < h && tope++ < 400) {
+      d.setDate(d.getDate() + 1);
+      var dow = d.getDay();
+      if (dow < 1 || dow > 5) continue;
+      var iso = d.getFullYear() + "-" +
+        ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+      if (feriados.indexOf(iso) === -1) n++;
+    }
+    return n;
+  }
+
   function ultimaActualizacion(registros) {
     var max = "";
     registros.forEach(function (r) { if (r.fecha > max) max = r.fecha; });
     var lbl = $("#update-date");
     if (lbl) lbl.textContent = max ? fmtFecha(max) + " de " + (max.split("-")[0]) : "—";
+
+    // Datos viejos: lo normal es ir un dia habil atras (el dia en curso recien
+    // entra cuando cierran los repartos, a la tarde). Dos o mas dias habiles de
+    // atraso significa que el robot dejo de publicar: hay que mirar Actions.
+    var badge = $(".hero__update");
+    if (!badge || !max) return;
+    var hoy = new Date();
+    var hoyISO = hoy.getFullYear() + "-" +
+      ("0" + (hoy.getMonth() + 1)).slice(-2) + "-" + ("0" + hoy.getDate()).slice(-2);
+    var atraso = habilesEntre(max, hoyISO);
+    if (atraso < 2) return;
+    badge.classList.add("hero__update--viejo");
+    var aviso = el("span", "hero__update__aviso",
+      "· sin actualizar hace " + atraso + " días hábiles");
+    badge.appendChild(aviso);
   }
 
   function prepararDatos(registros) {

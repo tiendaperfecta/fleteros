@@ -104,6 +104,10 @@ b { font-weight: 700; }
   font-size: 13px; font-weight: 600;
 }
 .hero__update .dot { width: 8px; height: 8px; border-radius: 50%; background: #6ee7a0; box-shadow: 0 0 0 4px rgba(110,231,160,.25); }
+/* Datos viejos: el robot dejo de publicar hace 2 o mas dias habiles. */
+.hero__update--viejo { background: rgba(194,69,47,.92); }
+.hero__update--viejo .dot { background: #FFD9D1; box-shadow: 0 0 0 4px rgba(255,217,209,.3); }
+.hero__update__aviso { font-weight: 800; }
 
 /* ---------- Controles ---------- */
 .controls {
