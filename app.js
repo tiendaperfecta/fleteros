@@ -784,18 +784,22 @@
     var stFle = (window.__TP_DATA__ && window.__TP_DATA__.estadisticasFletero) || {};
     var porFletero = Object.keys(stFle).map(function (n) {
       var s = stFle[n];
-      var sac = s.compSac || 0, rech = s.recBol || 0;
+      var sac = s.compSac || 0, rech = s.recBol || 0, imp = s.impRech || 0;
       // Sin redondear: si se redondea antes de ordenar, dos fleteros que
       // muestran el mismo entero quedan ordenados por nombre y no por rechazo.
       var p = (sac >= 20 && rech > 0) ? (100 * rech / sac) : 0;
       return {
         _l: n, _v: p,
-        _t: Math.round(p) + "% <span class='chart__cnt'>(" + rech + " de " + sac + ")</span>"
+        _t: Math.round(p) + "% <span class='chart__cnt'>(" + rech + " de " + sac +
+          (imp ? " · " + fmtPlata(imp) : "") + ")</span>"
       };
     }).filter(function (f) { return f._v > 0; })
       .sort(function (a, b) { return b._v - a._v; });
     var tFle = tarjeta("🚚 % de rechazo por fletero <span class='chart__cnt'>(ventas caídas completas)</span>", porFletero);
-    if (tFle) cont.appendChild(tFle);
+    // Con el monto al lado del conteo la fila queda larga: en el celular el
+    // nombre se cortaba con puntos suspensivos. chart--fletero lo deja pasar
+    // a dos lineas en vez de recortarlo.
+    if (tFle) { tFle.classList.add("chart--fletero"); cont.appendChild(tFle); }
 
     var zonas = (an.zonas || []).map(function (z) {
       return { _l: z.nombre, _v: z.pct, _t: Math.round(z.pct) + "% <span class='chart__cnt'>(" + z.rech + " de " + z.sac + ")</span>" };

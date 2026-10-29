@@ -267,6 +267,9 @@ main { max-width: 1080px; margin: 0 auto; padding: 22px 20px 60px; }
 .chart__top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 4px; }
 .chart__label { font-size: 13.5px; font-weight: 600; color: var(--ink); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chart__val { font-size: 14px; font-weight: 800; color: var(--ink); flex: none; }
+/* Tarjeta de fleteros: el parentesis lleva tambien la plata, asi que la fila
+   es larga. Que el nombre baje a dos lineas antes que quedar recortado. */
+.chart--fletero .chart__label { white-space: normal; overflow: visible; }
 .chart__cnt { font-size: 12px; font-weight: 600; color: var(--ink-2); }
 .avg b.rojo  { color: #C2452F; }
 .avg b.ambar { color: #B07A18; }
