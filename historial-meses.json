@@ -232,14 +232,16 @@
                     "fleteros":  12
                 },
     "2026-10":  {
-                    "premiosTotal":  0,
                     "boletas":  10117,
-                    "entregadas":  9801,
+                    "clientesEnt":  6348,
                     "repartos":  262,
-                    "boletasSac":  9285,
+                    "cierreFinal":  false,
+                    "actualizado":  "2026-10-29",
+                    "facturado":  851319874,
                     "clientesSac":  6438,
-                    "cartonesSacados":  9189,
-                    "efGeneral":  96.9,
+                    "entregadas":  9801,
+                    "premiosTotal":  0,
+                    "cartonesSacados":  9230,
                     "ranking":  [
                                     {
                                         "nombre":  "Enzo Julián Rizzoni",
@@ -318,7 +320,7 @@
                                         "repartos":  18,
                                         "asist":  82,
                                         "efE":  96,
-                                        "efC":  74.5,
+                                        "efC":  75.8,
                                         "premio":  0
                                     },
                                     {
@@ -338,13 +340,12 @@
                                         "premio":  0
                                     }
                                 ],
-                    "plataRech":  12905508,
-                    "clientesEnt":  6348,
-                    "cartonesVueltos":  7315,
-                    "actualizado":  "2026-10-29",
+                    "efGeneral":  96.9,
+                    "fleteros":  12,
                     "boletasRech":  190,
-                    "cierreFinal":  false,
-                    "cartonGeneral":  79.6,
-                    "fleteros":  12
+                    "boletasSac":  9285,
+                    "plataRech":  12905508,
+                    "cartonGeneral":  79.7,
+                    "cartonesVueltos":  7353
                 }
 }
