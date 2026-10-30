@@ -667,21 +667,23 @@
       var head =
         '<div class="rank__head"><span>#</span><span>Fletero</span>' +
         '<span class="rank__num">Asist.</span>' +
+        '<span class="rank__num">Rechazo</span>' +
         '<span class="rank__num">Entrega</span>' +
         '<span class="rank__num">Cartón</span></div>';
-      // Renglon chico debajo del nombre: la zona (hoy siempre vacia) y el
-      // rechazo del mes, el mismo par que la tarjeta del analisis.
-      function subRank(f) {
-        var partes = [];
-        if (f.zona) { partes.push(f.zona); }
-        if (f.rechPct != null) {
-          partes.push('Rechazo ' + Math.round(f.rechPct) + '% · ' + fmtPlata(f.rechImp));
-        }
-        return partes.join(' · ');
-      }
       var body = lista.map(function (f, i) {
         var medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : (i + 1);
         var bar = Math.max(4, Math.min(100, f.efE || 0));
+        // Rechazo del mes: % de boletas caidas completas y la plata. Sin el
+        // minimo de boletas no se muestra nada (un rechazo sobre cinco viajes
+        // daria 20% y no significa lo mismo).
+        var rechHTML = f.rechPct == null
+          ? '<span class="rank__num rank__prize--none">—</span>'
+          : '<span class="rank__num rank__rech"><b>' + Math.round(f.rechPct) + '%</b>' +
+            (f.rechImp > 0
+              ? '<em><span class="plata-larga">' + fmtPlata(f.rechImp) + '</span>' +
+                '<span class="plata-corta">' + fmtMillones(f.rechImp) + '</span></em>'
+              : '') +
+            '</span>';
         var asistHTML = f.asist == null
           ? '<span class="rank__num rank__prize--none">—</span>'
           : '<span class="rank__num"><span class="chip ' + (f.asist >= ASIST_MIN ? "chip--ok" : "chip--low") + '"' +
@@ -689,10 +691,11 @@
         return '<button class="rank__row" data-fletero="' + f.nombre.replace(/"/g, "&quot;") + '">' +
           '<span class="rank__pos">' + medal + '</span>' +
           '<span class="rank__name"><b>' + f.nombre + '</b>' +
-            (subRank(f) ? '<em>' + subRank(f) + '</em>' : '') +
+            (f.zona ? '<em>' + f.zona + '</em>' : '') +
             '<i class="rank__track"><i class="rank__fill rank__fill--' + claseColor(f.efE) + '" style="width:2%" data-w="' + bar + '"></i></i>' +
           '</span>' +
           asistHTML +
+          rechHTML +
           '<span class="rank__num">' + chip(f.efE) + '</span>' +
           '<span class="rank__num">' + chip(f.efR) + '</span>' +
         '</button>';

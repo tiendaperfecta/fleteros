@@ -243,13 +243,24 @@ main { max-width: 1080px; margin: 0 auto; padding: 22px 20px 60px; }
     grid-template-columns: 24px 1fr 56px 76px 58px; gap: 5px; padding: 11px 8px;
   }
 }
-/* Tabla combinada: asistencia + entrega + cartón, sin premio */
+/* Tabla combinada: asistencia + rechazo + entrega + cartón, sin premio */
 .rank__grid--triple .rank__head, .rank__grid--triple .rank__row {
-  grid-template-columns: 34px 1fr 72px 76px 76px;
+  grid-template-columns: 34px 1fr 62px 74px 70px 70px;
 }
 @media (max-width: 520px) {
   .rank__grid--triple .rank__head, .rank__grid--triple .rank__row {
-    grid-template-columns: 24px 1fr 56px 60px 60px; gap: 5px; padding: 11px 8px;
+    grid-template-columns: 20px 1fr 38px 46px 44px 42px; gap: 4px; padding: 11px 6px;
+  }
+  .rank__grid--triple .chip { font-size: 10.5px; padding: 2px 4px; }
+  /* Cuatro titulos en pantalla chica: sin esto "Entrega" y "Cartón" se
+     meten en la columna de al lado. */
+  .rank__grid--triple .rank__head { font-size: 9px; letter-spacing: 0; }
+  .rank__grid--triple .rank__pos { font-size: 13px; }
+  /* Con una columna mas el nombre no entra en un renglon: que use dos en
+     vez de cortarse con puntos suspensivos. */
+  .rank__grid--triple .rank__name b {
+    font-size: 12.5px; white-space: normal; overflow: visible; line-height: 1.15;
+    overflow-wrap: anywhere;
   }
 }
 
