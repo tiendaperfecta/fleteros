@@ -116,48 +116,48 @@
                     "fleteros":  12
                 },
     "2026-11":  {
-                    "boletas":  372,
-                    "clientesEnt":  242,
-                    "repartos":  15,
+                    "boletas":  386,
+                    "clientesEnt":  254,
+                    "repartos":  18,
                     "cierreFinal":  false,
                     "actualizado":  "2026-11-02",
-                    "facturado":  44764242,
-                    "clientesSac":  242,
-                    "entregadas":  372,
+                    "facturado":  47024695,
+                    "clientesSac":  254,
+                    "entregadas":  386,
                     "premiosTotal":  0,
                     "cartonesSacados":  0,
                     "ranking":  [
                                     {
                                         "nombre":  "Emanuel Valentino Cossu",
-                                        "repartos":  1,
-                                        "asist":  5,
+                                        "repartos":  2,
+                                        "asist":  10,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  37,
+                                        "compSac":  41,
                                         "impRech":  0
                                     },
                                     {
                                         "nombre":  "Marcelo Javier Acuña",
-                                        "repartos":  1,
-                                        "asist":  5,
+                                        "repartos":  2,
+                                        "asist":  10,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  16,
+                                        "compSac":  17,
                                         "impRech":  0
                                     },
                                     {
-                                        "nombre":  "Algañaraz German Marcelo",
+                                        "nombre":  "Rodrigo Martin Soto",
                                         "repartos":  1,
                                         "asist":  5,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  18,
+                                        "compSac":  33,
                                         "impRech":  0
                                     },
                                     {
@@ -179,29 +179,18 @@
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  29,
-                                        "impRech":  0
-                                    },
-                                    {
-                                        "nombre":  "Rodrigo Martin Soto",
-                                        "repartos":  1,
-                                        "asist":  5,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
                                         "compSac":  33,
                                         "impRech":  0
                                     },
                                     {
-                                        "nombre":  "Enzo Julián Rizzoni",
-                                        "repartos":  1,
-                                        "asist":  5,
+                                        "nombre":  "Algañaraz German Marcelo",
+                                        "repartos":  2,
+                                        "asist":  10,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  38,
+                                        "compSac":  18,
                                         "impRech":  0
                                     },
                                     {
@@ -223,8 +212,19 @@
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  33,
+                                        "compSac":  36,
                                         "impRech":  949
+                                    },
+                                    {
+                                        "nombre":  "Enzo Julián Rizzoni",
+                                        "repartos":  1,
+                                        "asist":  5,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0,
+                                        "recBol":  0,
+                                        "compSac":  38,
+                                        "impRech":  0
                                     },
                                     {
                                         "nombre":  "Edgardo Jacinto Gomez",
@@ -238,20 +238,9 @@
                                         "impRech":  0
                                     },
                                     {
-                                        "nombre":  "Mario Luis Gastiarena",
-                                        "repartos":  1,
-                                        "asist":  5,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
-                                        "compSac":  1,
-                                        "impRech":  0
-                                    },
-                                    {
                                         "nombre":  "Diego Andrés Martorello",
-                                        "repartos":  2,
-                                        "asist":  10,
+                                        "repartos":  3,
+                                        "asist":  14,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
@@ -261,9 +250,9 @@
                                     }
                                 ],
                     "efGeneral":  100,
-                    "fleteros":  12,
+                    "fleteros":  11,
                     "boletasRech":  0,
-                    "boletasSac":  365,
+                    "boletasSac":  377,
                     "plataRech":  1789,
                     "cartonGeneral":  0,
                     "cartonesVueltos":  0
