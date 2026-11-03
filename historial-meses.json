@@ -116,14 +116,14 @@
                     "fleteros":  12
                 },
     "2026-11":  {
-                    "boletas":  386,
-                    "clientesEnt":  254,
-                    "repartos":  18,
+                    "boletas":  711,
+                    "clientesEnt":  424,
+                    "repartos":  24,
                     "cierreFinal":  false,
-                    "actualizado":  "2026-11-02",
-                    "facturado":  47024695,
-                    "clientesSac":  254,
-                    "entregadas":  386,
+                    "actualizado":  "2026-11-03",
+                    "facturado":  76151069,
+                    "clientesSac":  424,
+                    "entregadas":  709,
                     "premiosTotal":  0,
                     "cartonesSacados":  0,
                     "ranking":  [
@@ -135,51 +135,7 @@
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  41,
-                                        "impRech":  0
-                                    },
-                                    {
-                                        "nombre":  "Marcelo Javier Acuña",
-                                        "repartos":  2,
-                                        "asist":  10,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
-                                        "compSac":  17,
-                                        "impRech":  0
-                                    },
-                                    {
-                                        "nombre":  "Rodrigo Martin Soto",
-                                        "repartos":  1,
-                                        "asist":  5,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
-                                        "compSac":  33,
-                                        "impRech":  0
-                                    },
-                                    {
-                                        "nombre":  "Leo Damian Moncada",
-                                        "repartos":  1,
-                                        "asist":  5,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
-                                        "compSac":  30,
-                                        "impRech":  0
-                                    },
-                                    {
-                                        "nombre":  "Leandro Martín Cossu",
-                                        "repartos":  2,
-                                        "asist":  10,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
-                                        "compSac":  33,
+                                        "compSac":  53,
                                         "impRech":  0
                                     },
                                     {
@@ -190,18 +146,51 @@
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  18,
+                                        "compSac":  46,
                                         "impRech":  0
                                     },
                                     {
-                                        "nombre":  "Alejandro Fabian Maiorano",
-                                        "repartos":  1,
-                                        "asist":  5,
+                                        "nombre":  "Leo Damian Moncada",
+                                        "repartos":  2,
+                                        "asist":  10,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  37,
+                                        "compSac":  46,
+                                        "impRech":  0
+                                    },
+                                    {
+                                        "nombre":  "Leandro Martín Cossu",
+                                        "repartos":  2,
+                                        "asist":  10,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0,
+                                        "recBol":  0,
+                                        "compSac":  52,
+                                        "impRech":  0
+                                    },
+                                    {
+                                        "nombre":  "Edgardo Jacinto Gomez",
+                                        "repartos":  3,
+                                        "asist":  14,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0,
+                                        "recBol":  0,
+                                        "compSac":  70,
+                                        "impRech":  0
+                                    },
+                                    {
+                                        "nombre":  "Alejandro Fabian Maiorano",
+                                        "repartos":  2,
+                                        "asist":  10,
+                                        "efE":  100,
+                                        "efC":  0,
+                                        "premio":  0,
+                                        "recBol":  0,
+                                        "compSac":  51,
                                         "impRech":  0
                                     },
                                     {
@@ -212,7 +201,7 @@
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  36,
+                                        "compSac":  55,
                                         "impRech":  949
                                     },
                                     {
@@ -227,33 +216,44 @@
                                         "impRech":  0
                                     },
                                     {
-                                        "nombre":  "Edgardo Jacinto Gomez",
-                                        "repartos":  1,
-                                        "asist":  5,
+                                        "nombre":  "Diego Andrés Martorello",
+                                        "repartos":  4,
+                                        "asist":  19,
                                         "efE":  100,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  29,
-                                        "impRech":  0
+                                        "compSac":  110,
+                                        "impRech":  840
                                     },
                                     {
-                                        "nombre":  "Diego Andrés Martorello",
-                                        "repartos":  3,
-                                        "asist":  14,
-                                        "efE":  100,
+                                        "nombre":  "Rodrigo Martin Soto",
+                                        "repartos":  2,
+                                        "asist":  10,
+                                        "efE":  97.9,
                                         "efC":  0,
                                         "premio":  0,
                                         "recBol":  0,
-                                        "compSac":  64,
-                                        "impRech":  840
+                                        "compSac":  44,
+                                        "impRech":  153450
+                                    },
+                                    {
+                                        "nombre":  "Marcelo Javier Acuña",
+                                        "repartos":  2,
+                                        "asist":  10,
+                                        "efE":  97.2,
+                                        "efC":  0,
+                                        "premio":  0,
+                                        "recBol":  0,
+                                        "compSac":  31,
+                                        "impRech":  20057
                                     }
                                 ],
-                    "efGeneral":  100,
+                    "efGeneral":  99.7,
                     "fleteros":  11,
                     "boletasRech":  0,
-                    "boletasSac":  377,
-                    "plataRech":  1789,
+                    "boletasSac":  597,
+                    "plataRech":  175296,
                     "cartonGeneral":  0,
                     "cartonesVueltos":  0
                 },
