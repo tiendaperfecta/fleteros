@@ -125,7 +125,7 @@
                     "clientesSac":  594,
                     "entregadas":  999,
                     "premiosTotal":  0,
-                    "cartonesSacados":  300,
+                    "cartonesSacados":  336,
                     "ranking":  [
                                     {
                                         "nombre":  "Emanuel Valentino Cossu",
@@ -220,7 +220,7 @@
                                         "repartos":  2,
                                         "asist":  10,
                                         "efE":  100,
-                                        "efC":  0,
+                                        "efC":  75,
                                         "premio":  0,
                                         "recBol":  0,
                                         "compSac":  39,
@@ -254,8 +254,8 @@
                     "boletasRech":  0,
                     "boletasSac":  890,
                     "plataRech":  175296,
-                    "cartonGeneral":  61,
-                    "cartonesVueltos":  183
+                    "cartonGeneral":  62.5,
+                    "cartonesVueltos":  210
                 },
     "2026-09":  {
                     "premiosTotal":  0,

@@ -1,5 +1,5 @@
 /* GENERADO AUTOMATICAMENTE por robot-nube.ps1 (API Gescom, GitHub Actions) - NO EDITAR A MANO
-   Ultima actualizacion: 2026-11-03 14:56 */
+   Ultima actualizacion: 2026-11-03 15:32 */
 window.__TP_CONFIG__ = { SHEET_CSV_URL: '', umbrales: { bueno: 90, medio: 75 }, diasHistorial: 14 };
 window.__TP_DATA__ = { registros: [
  {"fecha":"2026-11-02","fletero":"Alejandro Fabian Maiorano","zona":"","repartos":1,"entregas_asignadas":37,"entregas_realizadas":37,"cartones_a_retornar":41,"cartones_retornados":0}
@@ -7,7 +7,7 @@ window.__TP_DATA__ = { registros: [
 ,{"fecha":"2026-11-02","fletero":"Diego Andrés Martorello","zona":"","repartos":2,"entregas_asignadas":66,"entregas_realizadas":66,"cartones_a_retornar":68,"cartones_retornados":55}
 ,{"fecha":"2026-11-02","fletero":"Edgardo Jacinto Gomez","zona":"","repartos":1,"entregas_asignadas":29,"entregas_realizadas":29,"cartones_a_retornar":36,"cartones_retornados":31}
 ,{"fecha":"2026-11-02","fletero":"Emanuel Valentino Cossu","zona":"","repartos":1,"entregas_asignadas":37,"entregas_realizadas":37,"cartones_a_retornar":0,"cartones_retornados":0}
-,{"fecha":"2026-11-02","fletero":"Enzo Julián Rizzoni","zona":"","repartos":1,"entregas_asignadas":38,"entregas_realizadas":38,"cartones_a_retornar":0,"cartones_retornados":0}
+,{"fecha":"2026-11-02","fletero":"Enzo Julián Rizzoni","zona":"","repartos":1,"entregas_asignadas":38,"entregas_realizadas":38,"cartones_a_retornar":36,"cartones_retornados":27}
 ,{"fecha":"2026-11-02","fletero":"Ezequiel Dario Gargan","zona":"","repartos":1,"entregas_asignadas":34,"entregas_realizadas":34,"cartones_a_retornar":41,"cartones_retornados":27}
 ,{"fecha":"2026-11-02","fletero":"Leandro Martín Cossu","zona":"","repartos":1,"entregas_asignadas":28,"entregas_realizadas":28,"cartones_a_retornar":0,"cartones_retornados":0}
 ,{"fecha":"2026-11-02","fletero":"Leo Damian Moncada","zona":"","repartos":1,"entregas_asignadas":30,"entregas_realizadas":30,"cartones_a_retornar":37,"cartones_retornados":33}
