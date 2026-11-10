@@ -116,60 +116,82 @@
                     "fleteros":  12
                 },
     "2026-11":  {
-                    "boletas":  3020,
-                    "clientesEnt":  1668,
-                    "repartos":  81,
+                    "boletas":  3490,
+                    "clientesEnt":  1985,
+                    "repartos":  86,
                     "cierreFinal":  false,
-                    "actualizado":  "2026-11-09",
-                    "facturado":  370780009,
-                    "clientesSac":  1699,
-                    "entregadas":  2925,
+                    "actualizado":  "2026-11-10",
+                    "facturado":  423230131,
+                    "clientesSac":  2017,
+                    "entregadas":  3383,
                     "premiosTotal":  0,
-                    "cartonesSacados":  2972,
+                    "cartonesSacados":  3031,
                     "ranking":  [
                                     {
-                                        "nombre":  "Leo Damian Moncada",
+                                        "nombre":  "Marcelo Javier Acuña",
                                         "repartos":  7,
                                         "asist":  33,
-                                        "efE":  98.8,
+                                        "efE":  98.7,
+                                        "efC":  85.7,
+                                        "premio":  0,
+                                        "recBol":  2,
+                                        "compSac":  191,
+                                        "impRech":  141060
+                                    },
+                                    {
+                                        "nombre":  "Leo Damian Moncada",
+                                        "repartos":  8,
+                                        "asist":  38,
+                                        "efE":  98.7,
                                         "efC":  80.3,
                                         "premio":  0,
-                                        "recBol":  3,
-                                        "compSac":  209,
-                                        "impRech":  149778
+                                        "recBol":  4,
+                                        "compSac":  247,
+                                        "impRech":  228778
                                     },
                                     {
                                         "nombre":  "Leandro Martín Cossu",
                                         "repartos":  7,
                                         "asist":  33,
-                                        "efE":  98.7,
+                                        "efE":  98.5,
                                         "efC":  87.9,
                                         "premio":  0,
                                         "recBol":  3,
-                                        "compSac":  255,
-                                        "impRech":  39840
-                                    },
-                                    {
-                                        "nombre":  "Marcelo Javier Acuña",
-                                        "repartos":  7,
-                                        "asist":  33,
-                                        "efE":  98.5,
-                                        "efC":  85.7,
-                                        "premio":  0,
-                                        "recBol":  2,
-                                        "compSac":  157,
-                                        "impRech":  141060
+                                        "compSac":  288,
+                                        "impRech":  41554
                                     },
                                     {
                                         "nombre":  "Ezequiel Dario Gargan",
                                         "repartos":  7,
                                         "asist":  33,
-                                        "efE":  98.4,
+                                        "efE":  98.3,
                                         "efC":  81.7,
                                         "premio":  0,
-                                        "recBol":  4,
-                                        "compSac":  260,
-                                        "impRech":  209869
+                                        "recBol":  5,
+                                        "compSac":  310,
+                                        "impRech":  216298
+                                    },
+                                    {
+                                        "nombre":  "Diego Andrés Martorello",
+                                        "repartos":  14,
+                                        "asist":  67,
+                                        "efE":  97.6,
+                                        "efC":  88.4,
+                                        "premio":  0,
+                                        "recBol":  10,
+                                        "compSac":  528,
+                                        "impRech":  404921
+                                    },
+                                    {
+                                        "nombre":  "Enzo Julián Rizzoni",
+                                        "repartos":  6,
+                                        "asist":  29,
+                                        "efE":  97.5,
+                                        "efC":  86,
+                                        "premio":  0,
+                                        "recBol":  3,
+                                        "compSac":  172,
+                                        "impRech":  378040
                                     },
                                     {
                                         "nombre":  "Alejandro Fabian Maiorano",
@@ -179,83 +201,61 @@
                                         "efC":  66.7,
                                         "premio":  0,
                                         "recBol":  2,
-                                        "compSac":  183,
-                                        "impRech":  300442
-                                    },
-                                    {
-                                        "nombre":  "Diego Andrés Martorello",
-                                        "repartos":  12,
-                                        "asist":  57,
-                                        "efE":  97.2,
-                                        "efC":  88.4,
-                                        "premio":  0,
-                                        "recBol":  10,
-                                        "compSac":  440,
-                                        "impRech":  404921
-                                    },
-                                    {
-                                        "nombre":  "Enzo Julián Rizzoni",
-                                        "repartos":  5,
-                                        "asist":  24,
-                                        "efE":  97.1,
-                                        "efC":  86,
-                                        "premio":  0,
-                                        "recBol":  3,
-                                        "compSac":  142,
-                                        "impRech":  378040
+                                        "compSac":  218,
+                                        "impRech":  392092
                                     },
                                     {
                                         "nombre":  "Algañaraz German Marcelo",
                                         "repartos":  7,
                                         "asist":  33,
-                                        "efE":  96,
+                                        "efE":  96.5,
                                         "efC":  72.5,
                                         "premio":  0,
                                         "recBol":  9,
-                                        "compSac":  231,
+                                        "compSac":  274,
                                         "impRech":  580940
                                     },
                                     {
                                         "nombre":  "Emanuel Valentino Cossu",
-                                        "repartos":  7,
-                                        "asist":  33,
-                                        "efE":  95.5,
-                                        "efC":  56.8,
+                                        "repartos":  8,
+                                        "asist":  38,
+                                        "efE":  95.6,
+                                        "efC":  62.7,
                                         "premio":  0,
-                                        "recBol":  9,
-                                        "compSac":  235,
-                                        "impRech":  864621
+                                        "recBol":  10,
+                                        "compSac":  277,
+                                        "impRech":  882856
                                     },
                                     {
                                         "nombre":  "Rodrigo Martin Soto",
                                         "repartos":  7,
                                         "asist":  33,
-                                        "efE":  95.4,
+                                        "efE":  93.5,
                                         "efC":  87.5,
                                         "premio":  0,
-                                        "recBol":  6,
-                                        "compSac":  153,
-                                        "impRech":  707613
+                                        "recBol":  8,
+                                        "compSac":  177,
+                                        "impRech":  963424
                                     },
                                     {
                                         "nombre":  "Edgardo Jacinto Gomez",
                                         "repartos":  8,
                                         "asist":  38,
-                                        "efE":  92.4,
+                                        "efE":  93,
                                         "efC":  43.8,
                                         "premio":  0,
                                         "recBol":  14,
-                                        "compSac":  237,
-                                        "impRech":  862745
+                                        "compSac":  273,
+                                        "impRech":  865255
                                     }
                                 ],
                     "efGeneral":  96.9,
                     "fleteros":  11,
-                    "boletasRech":  65,
-                    "boletasSac":  2502,
-                    "plataRech":  4639869,
-                    "cartonGeneral":  76.3,
-                    "cartonesVueltos":  2267
+                    "boletasRech":  70,
+                    "boletasSac":  2955,
+                    "plataRech":  5095218,
+                    "cartonGeneral":  76.5,
+                    "cartonesVueltos":  2318
                 },
     "2026-09":  {
                     "premiosTotal":  0,
