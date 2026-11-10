@@ -35,29 +35,19 @@ script Python que lee y escribe con `newline=""` y aborta si un ancla no es
 única. Nunca con `\uXXXX` dentro de un heredoc de bash: las barras se colapsan
 y el archivo queda truncado.
 
-## Cómo trabajar acá, sin que haya que pedirlo
+## Propio de este panel
 
-Estas cosas se hacen solas, no hace falta que el usuario escriba ningún comando:
+Las reglas generales de los paneles —celular primero, archivos de datos que no
+se tocan a mano, mirar Actions antes de gritar bug, claves, estilo de commit—
+están en `~/.claude/CLAUDE.md` y valen acá también. Lo que sigue es lo que
+pasa sólo en este repo.
 
-- **Antes de abrir `app.js`, `data.js`, `robot-nube.ps1` o `historial-meses.json`**
-  (todos de 20 KB para arriba): indexar primero y leer sólo el tramo que importa,
-  en vez de cargar el archivo entero. Lo mismo con los logs de Actions.
-- **Ante cualquier cambio visual** (tablas, colores, tipografía, layout, cómo
-  entra algo en el celular): aplicar criterio de diseño frontend sin que lo
-  pidan, y verificar el resultado renderizado, no sólo el código.
-- **Si se toca `.github/workflows/`**: revisar de paso corridas desperdiciadas,
-  falta de timeouts y acciones sin pinear. El workflow corre seis veces por día
-  hábil sobre runners de Windows, que son los más caros en minutos.
-- **Ante "el panel no se actualizó"**: mirar primero las corridas
-  (`gh run list --workflow=actualizar-panel.yml`). El cron gratuito de GitHub
-  llega tarde por horas, no por minutos — una corrida de 07:20 ART suele salir
-  13:45–14:30. Casi nunca es un bug: es la corrida que todavía no salió.
-- **Ante "no se ve el cambio"**: confirmar que subió el `?v=` antes de buscar
-  cualquier otra cosa.
+Este workflow corre **seis veces por día hábil sobre runners de Windows**, que
+son los más caros en minutos: si se lo toca, vale la pena mirar el gasto.
 
-## Git
+Ante "el panel no se actualizó": `gh run list --workflow=actualizar-panel.yml`.
+Una corrida de las 07:20 ART suele salir entre 13:45 y 14:30, y la de 14:20
+entre 18:45 y 19:45. Casi nunca es un bug: es la corrida que no salió todavía.
+Para destrabarla, `gh workflow run actualizar-panel.yml --ref main`.
 
-Commitear en español, en una línea, describiendo el efecto para el usuario del
-panel y no el detalle técnico. Identidad: `tiendaperfecta`. `gh` está
-autenticado con scopes `repo` y `workflow`, así que se puede pushear y disparar
-el workflow directo.
+`gh` está autenticado como `tiendaperfecta` con scopes `repo` y `workflow`.
