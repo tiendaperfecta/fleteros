@@ -116,14 +116,14 @@
                     "fleteros":  12
                 },
     "2026-11":  {
-                    "boletas":  3513,
-                    "clientesEnt":  1993,
+                    "boletas":  3515,
+                    "clientesEnt":  1994,
                     "repartos":  92,
                     "cierreFinal":  false,
                     "actualizado":  "2026-11-10",
-                    "facturado":  424943246,
-                    "clientesSac":  2025,
-                    "entregadas":  3406,
+                    "facturado":  424977532,
+                    "clientesSac":  2026,
+                    "entregadas":  3408,
                     "premiosTotal":  0,
                     "cartonesSacados":  3608,
                     "ranking":  [
@@ -245,14 +245,14 @@
                                         "efC":  50.4,
                                         "premio":  0,
                                         "recBol":  14,
-                                        "compSac":  276,
+                                        "compSac":  277,
                                         "impRech":  865255
                                     }
                                 ],
                     "efGeneral":  97,
                     "fleteros":  11,
                     "boletasRech":  70,
-                    "boletasSac":  2965,
+                    "boletasSac":  2966,
                     "plataRech":  5095218,
                     "cartonGeneral":  76.3,
                     "cartonesVueltos":  2754
