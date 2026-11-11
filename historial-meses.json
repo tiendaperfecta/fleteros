@@ -128,17 +128,6 @@
                     "cartonesSacados":  3869,
                     "ranking":  [
                                     {
-                                        "nombre":  "Mario Luis Gastiarena",
-                                        "repartos":  1,
-                                        "asist":  5,
-                                        "efE":  100,
-                                        "efC":  0,
-                                        "premio":  0,
-                                        "recBol":  0,
-                                        "compSac":  0,
-                                        "impRech":  0
-                                    },
-                                    {
                                         "nombre":  "Marcelo Javier Acuña",
                                         "repartos":  8,
                                         "asist":  38,
@@ -205,6 +194,17 @@
                                         "impRech":  580940
                                     },
                                     {
+                                        "nombre":  "Enzo Julián Rizzoni",
+                                        "repartos":  7,
+                                        "asist":  33,
+                                        "efE":  96.6,
+                                        "efC":  85.1,
+                                        "premio":  0,
+                                        "recBol":  4,
+                                        "compSac":  172,
+                                        "impRech":  392440
+                                    },
+                                    {
                                         "nombre":  "Alejandro Fabian Maiorano",
                                         "repartos":  9,
                                         "asist":  43,
@@ -214,17 +214,6 @@
                                         "recBol":  5,
                                         "compSac":  257,
                                         "impRech":  552830
-                                    },
-                                    {
-                                        "nombre":  "Enzo Julián Rizzoni",
-                                        "repartos":  6,
-                                        "asist":  29,
-                                        "efE":  96.5,
-                                        "efC":  85.1,
-                                        "premio":  0,
-                                        "recBol":  4,
-                                        "compSac":  172,
-                                        "impRech":  392440
                                     },
                                     {
                                         "nombre":  "Emanuel Valentino Cossu",
@@ -261,7 +250,7 @@
                                     }
                                 ],
                     "efGeneral":  96.7,
-                    "fleteros":  12,
+                    "fleteros":  11,
                     "boletasRech":  83,
                     "boletasSac":  3363,
                     "plataRech":  6032060,
