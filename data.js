@@ -1,5 +1,5 @@
 /* GENERADO AUTOMATICAMENTE por robot-nube.ps1 (API Gescom, GitHub Actions) - NO EDITAR A MANO
-   Ultima actualizacion: 2026-11-12 15:26 */
+   Ultima actualizacion: 2026-11-12 15:32 */
 window.__TP_CONFIG__ = { SHEET_CSV_URL: '', umbrales: { bueno: 90, medio: 75 }, diasHistorial: 14 };
 window.__TP_DATA__ = { registros: [
  {"fecha":"2026-11-02","fletero":"Alejandro Fabian Maiorano","zona":"","repartos":1,"entregas_asignadas":37,"entregas_realizadas":35,"cartones_a_retornar":41,"cartones_retornados":0}
