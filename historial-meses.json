@@ -116,16 +116,16 @@
                     "fleteros":  12
                 },
     "2026-11":  {
-                    "boletas":  5073,
-                    "clientesEnt":  3087,
-                    "repartos":  136,
+                    "boletas":  5113,
+                    "clientesEnt":  3117,
+                    "repartos":  140,
                     "cierreFinal":  false,
                     "actualizado":  "2026-11-16",
-                    "facturado":  605081051,
-                    "clientesSac":  3156,
-                    "entregadas":  4856,
+                    "facturado":  613088962,
+                    "clientesSac":  3186,
+                    "entregadas":  4896,
                     "premiosTotal":  0,
-                    "cartonesSacados":  5258,
+                    "cartonesSacados":  5540,
                     "ranking":  [
                                     {
                                         "nombre":  "Mario Luis Gastiarena",
@@ -140,13 +140,13 @@
                                     },
                                     {
                                         "nombre":  "Leo Damian Moncada",
-                                        "repartos":  11,
-                                        "asist":  52,
+                                        "repartos":  12,
+                                        "asist":  57,
                                         "efE":  98.1,
-                                        "efC":  81.9,
+                                        "efC":  74.8,
                                         "premio":  0,
                                         "recBol":  9,
-                                        "compSac":  359,
+                                        "compSac":  366,
                                         "impRech":  405208
                                     },
                                     {
@@ -157,40 +157,40 @@
                                         "efC":  71.2,
                                         "premio":  0,
                                         "recBol":  5,
-                                        "compSac":  305,
+                                        "compSac":  307,
                                         "impRech":  293308
                                     },
                                     {
                                         "nombre":  "Leandro Martín Cossu",
-                                        "repartos":  11,
-                                        "asist":  52,
-                                        "efE":  96.9,
+                                        "repartos":  12,
+                                        "asist":  57,
+                                        "efE":  97,
                                         "efC":  70.7,
                                         "premio":  0,
                                         "recBol":  9,
-                                        "compSac":  401,
+                                        "compSac":  410,
                                         "impRech":  738595
                                     },
                                     {
                                         "nombre":  "Ezequiel Dario Gargan",
-                                        "repartos":  11,
-                                        "asist":  52,
+                                        "repartos":  12,
+                                        "asist":  57,
                                         "efE":  96.9,
-                                        "efC":  84.7,
+                                        "efC":  77.2,
                                         "premio":  0,
                                         "recBol":  8,
-                                        "compSac":  462,
+                                        "compSac":  468,
                                         "impRech":  512220
                                     },
                                     {
                                         "nombre":  "Diego Andrés Martorello",
                                         "repartos":  21,
                                         "asist":  100,
-                                        "efE":  96.6,
-                                        "efC":  87.6,
+                                        "efE":  96.7,
+                                        "efC":  87,
                                         "premio":  0,
                                         "recBol":  17,
-                                        "compSac":  760,
+                                        "compSac":  762,
                                         "impRech":  1058704
                                     },
                                     {
@@ -201,7 +201,7 @@
                                         "efC":  69.3,
                                         "premio":  0,
                                         "recBol":  12,
-                                        "compSac":  388,
+                                        "compSac":  389,
                                         "impRech":  688799
                                     },
                                     {
@@ -219,11 +219,11 @@
                                         "nombre":  "Enzo Julián Rizzoni",
                                         "repartos":  8,
                                         "asist":  38,
-                                        "efE":  94.8,
+                                        "efE":  94.9,
                                         "efC":  85,
                                         "premio":  0,
                                         "recBol":  7,
-                                        "compSac":  199,
+                                        "compSac":  200,
                                         "impRech":  674765
                                     },
                                     {
@@ -231,10 +231,10 @@
                                         "repartos":  12,
                                         "asist":  57,
                                         "efE":  94.4,
-                                        "efC":  72.2,
+                                        "efC":  69.5,
                                         "premio":  0,
                                         "recBol":  20,
-                                        "compSac":  429,
+                                        "compSac":  433,
                                         "impRech":  1507808
                                     },
                                     {
@@ -242,31 +242,31 @@
                                         "repartos":  14,
                                         "asist":  67,
                                         "efE":  91.9,
-                                        "efC":  61.7,
+                                        "efC":  58.2,
                                         "premio":  0,
                                         "recBol":  20,
-                                        "compSac":  456,
+                                        "compSac":  464,
                                         "impRech":  1595231
                                     },
                                     {
                                         "nombre":  "Rodrigo Martin Soto",
-                                        "repartos":  11,
-                                        "asist":  52,
+                                        "repartos":  12,
+                                        "asist":  57,
                                         "efE":  91.9,
-                                        "efC":  85.4,
+                                        "efC":  76.7,
                                         "premio":  0,
                                         "recBol":  14,
-                                        "compSac":  300,
+                                        "compSac":  304,
                                         "impRech":  1606106
                                     }
                                 ],
-                    "efGeneral":  95.7,
+                    "efGeneral":  95.8,
                     "fleteros":  12,
                     "boletasRech":  131,
-                    "boletasSac":  4487,
+                    "boletasSac":  4531,
                     "plataRech":  11256035,
-                    "cartonGeneral":  76.8,
-                    "cartonesVueltos":  4040
+                    "cartonGeneral":  73.7,
+                    "cartonesVueltos":  4082
                 },
     "2026-09":  {
                     "premiosTotal":  0,
